@@ -21,13 +21,10 @@ class MyGame extends FlameGame {
     await super.onLoad();
     var myImage = await Images().load('spritesheet.png');
     SpriteSheet mySheet = SpriteSheet(image: myImage, srcSize: Vector2(1080,1980));
-    SpriteComponent clock = SpriteComponent();
-    clock
-      ..sprite = 
-        mySheet.getSpriteById(30)
-      ..size = Vector2(108*4,198*4)
-      ..x = 0
-      ..y = 0;
+
+    SpriteAnimation myAnimation = SpriteAnimation.spriteList([mySheet.getSpriteById(0),mySheet.getSpriteById(30),mySheet.getSpriteById(60)], stepTime: 0.1);
+    SpriteAnimationComponent clock = SpriteAnimationComponent(animation: myAnimation);
+    
     add(clock);
     print('completed loading assets');
   }
